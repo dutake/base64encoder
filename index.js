@@ -7,8 +7,8 @@ module.exports = class base64encoder extends Plugin {
 			usage: '{c} <message>',
 			executor: async (message) => {
 				return {
-					send: true,
-					result: btoa(message.join(' '))
+					send: false,
+					result: `${message.join(' ')} => \`${btoa(message.join(' '))}\``
 				};
 			}
 		});
@@ -18,8 +18,8 @@ module.exports = class base64encoder extends Plugin {
 			usage: '{c} <message>',
 			executor: async (message) => {
 				return {
-					send: true,
-					result: atob(message.join(' '))
+					send: false,
+					result: `\`${message.join(' ')}\` => ${atob(message.join(' '))}`
 				};
 			}
 		});
