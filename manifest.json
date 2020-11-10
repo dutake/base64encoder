@@ -1,0 +1,8 @@
+{
+    "name": "base64encoder",
+    "version": "1.0.0",
+    "description": "It lets you convert normal text to base 64 & vice versa",
+    "author": "dutake",
+    "license": "MIT"
+  }
+  
