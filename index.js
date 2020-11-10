@@ -6,7 +6,10 @@ module.exports = class base64encoder extends Plugin {
 			description: 'It encodes a string from normal text to base 64',
 			usage: '{c} <message>',
 			executor: async (message) => {
-				return await this.stringtobase64(message.join(" "));
+				return {
+					send: true,
+					result: btoa(message)
+				};
 			}
 		});
 		powercord.api.commands.registerCommand({
@@ -14,23 +17,15 @@ module.exports = class base64encoder extends Plugin {
 			description: 'It decodes a string from base 64 to normal text',
 			usage: '{c} <message>',
 			executor: async (message) => {
-				return await this.base64tostring(message.join(" "));
+				return {
+					send: true,
+					result: atob(message)
+				};
 			}
 		});
 	}
 	pluginWillUnload() {
 		powercord.api.commands.unregisterCommand('encode');
-	}
-	async stringtobase64(messagetoconvert) {
-		return {
-			send: true,
-			result: btoa(messagetoconvert)
-		};
-	}
-	async base64tostring(messagetoconvert) {
-		return {
-			send: true,
-			result: atob(messagetoconvert)
-		};
+		powercord.api.commands.unregisterCommand('decode');
 	}
 };
