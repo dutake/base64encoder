@@ -20,6 +20,7 @@ module.exports = class base64encoder extends Plugin {
 	}
 	pluginWillUnload() {
 		powercord.api.commands.unregisterCommand('encode');
+		powercord.api.commands.unregisterCommand('decode');
 	}
 	async stringtobase64(messagetoconvert) {
 		return {
